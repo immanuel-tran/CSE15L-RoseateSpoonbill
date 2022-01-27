@@ -33,6 +33,11 @@ public class MarkdownParse {
                toReturn.add(markdown.substring(openParen + 1, closeParen));
            }
 
+           //Fix for 6
+           if(nextCloseBracket + 1 != openParen){
+               break;
+           }
+
             currentIndex = closeParen + 1;
         }
         return toReturn;
