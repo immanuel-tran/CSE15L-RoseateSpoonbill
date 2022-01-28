@@ -29,14 +29,12 @@ public class MarkdownParse {
                  nextOpenBracket == -1  ) {
                      break;
                  }
-           if(markdown.indexOf("!") != nextOpenBracket - 1){
-               toReturn.add(markdown.substring(openParen + 1, closeParen));
-           }
 
-           //Fix for 6
-           if(nextCloseBracket + 1 != openParen){
-               break;
-           }
+            //Fix 6     
+            if(nextCloseBracket + 1 == openParen &&
+                markdown.indexOf("!") != nextOpenBracket - 1) {
+                    toReturn.add(markdown.substring(openParen + 1, closeParen));
+                 }
 
             currentIndex = closeParen + 1;
         }
